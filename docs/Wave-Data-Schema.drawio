@@ -1,0 +1,69 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="JfSSbZBYR-f-10UTFm66">
+    <mxGraphModel dx="975" dy="536" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-1" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="payments" vertex="1">
+          <mxGeometry height="210" width="200" x="445" y="170" as="geometry">
+            <mxRectangle height="50" width="80" x="240" y="150" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-10" edge="1" parent="FEvFGn3x2a5UFLXiZ1Df-1" style="endArrow=classic;html=1;rounded=0;strokeColor=#999999;exitX=0.006;exitY=0.161;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.11;entryDx=0;entryDy=0;entryPerimeter=0;" target="FEvFGn3x2a5UFLXiZ1Df-6" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="200" y="92.38" as="sourcePoint" />
+            <mxPoint x="163.79999999999995" y="77.62" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-2" parent="FEvFGn3x2a5UFLXiZ1Df-1" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;+&lt;/font&gt;&lt;font style=&quot;color: rgb(0, 102, 0);&quot;&gt;payment_id&lt;br&gt;&lt;/font&gt;+&lt;font style=&quot;color: rgb(102, 0, 0);&quot;&gt;wallet_id&lt;/font&gt;&lt;br&gt;+&lt;font style=&quot;color: rgb(102, 0, 0);&quot;&gt;merchant_id&lt;/font&gt;&lt;div&gt;+amount&lt;/div&gt;&lt;div&gt;+currency&lt;/div&gt;&lt;div&gt;+status: &lt;span style=&quot;background-color: rgb(255, 181, 112);&quot;&gt;&lt;i style=&quot;&quot;&gt;success&lt;/i&gt;/&lt;i style=&quot;&quot;&gt;failed&lt;/i&gt;/&lt;i style=&quot;&quot;&gt;reversed&lt;/i&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+created_at&lt;/div&gt;&lt;div&gt;+updated_at&lt;/div&gt;&lt;div&gt;+country&lt;/div&gt;&lt;div&gt;+channel: &lt;span style=&quot;background-color: rgb(230, 208, 222);&quot;&gt;&lt;i&gt;ussd/app/agent&lt;/i&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="200" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-5" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="merchants" vertex="1">
+          <mxGeometry height="170" width="300" x="685" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-6" parent="FEvFGn3x2a5UFLXiZ1Df-5" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="+&lt;font style=&quot;color: rgb(0, 102, 0);&quot;&gt;merchant_id&lt;/font&gt;&lt;br&gt;+merchant_name&lt;br&gt;+category: &lt;i style=&quot;background-color: rgb(230, 208, 222);&quot;&gt;supermarket/ecommerce/taxi/utility/other&lt;/i&gt;&lt;div&gt;&lt;i&gt;+&lt;/i&gt;country&lt;/div&gt;&lt;div&gt;&lt;i&gt;+&lt;/i&gt;status&lt;i&gt;: &lt;span style=&quot;background-color: rgb(230, 208, 222);&quot;&gt;active/inactive/suspended&lt;/span&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;+created_at&lt;/div&gt;&lt;div&gt;+updated_at&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="300" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-7" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="wallets" vertex="1">
+          <mxGeometry height="170" width="290" x="115" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-8" parent="FEvFGn3x2a5UFLXiZ1Df-7" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="+&lt;font style=&quot;color: rgb(0, 102, 0);&quot;&gt;wallet_id&lt;/font&gt;&lt;br&gt;+user_created_at&lt;br&gt;+kyc_tier: &lt;span style=&quot;background-color: rgb(255, 181, 112);&quot;&gt;&lt;i style=&quot;&quot;&gt;0/1/2&lt;/i&gt;&lt;/span&gt;&lt;div&gt;+country&lt;/div&gt;&lt;div&gt;+is_agent: &lt;i style=&quot;background-color: rgb(230, 208, 222);&quot;&gt;true/false&lt;/i&gt;&lt;/div&gt;&lt;div&gt;+status: &lt;i style=&quot;background-color: rgb(230, 208, 222);&quot;&gt;active/inactive/blocked&lt;/i&gt;&lt;/div&gt;&lt;div&gt;+updated_at&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="290" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-9" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=#999999;exitX=0.006;exitY=0.161;exitDx=0;exitDy=0;exitPerimeter=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="442.20000000000005" y="245.76" as="sourcePoint" />
+            <mxPoint x="406" y="231" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Magnitude: Billions of rows" vertex="1">
+          <mxGeometry height="40" width="152.5" x="492.5" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-14" parent="1" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.text.stickyNote2;fontColor=#666666;mainText=;fontSize=17;whiteSpace=wrap;fillColor=#ffffcc;strokeColor=#F62E00;" value="- This model is not keeping the track of historic data which means that we do not record the status before updating it. I assume it works because in the business model, it&#39;s clear how the status changes and they are limited so we can imply the history of the changes. Or we don&#39;t care about the past, and we only care about the current situation." vertex="1">
+          <mxGeometry height="200" width="625" x="115" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-44" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="List" vertex="1">
+          <mxGeometry height="150" width="140" x="810" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-45" parent="FEvFGn3x2a5UFLXiZ1Df-44" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;color: rgb(0, 102, 0); text-align: center;&quot;&gt;Primary key&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="140" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-46" parent="FEvFGn3x2a5UFLXiZ1Df-44" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;color: rgb(102, 0, 0); text-align: center;&quot;&gt;Secondary key&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="140" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-47" parent="FEvFGn3x2a5UFLXiZ1Df-44" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;color: rgb(77, 77, 77); text-align: center; background-color: rgb(230, 208, 222);&quot;&gt;Enum&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="140" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-49" parent="FEvFGn3x2a5UFLXiZ1Df-44" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;color: rgb(77, 77, 77); text-align: center; background-color: rgb(255, 181, 112);&quot;&gt;Mutable&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="140" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-50" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Magnitude: Millions of rows" vertex="1">
+          <mxGeometry height="40" width="152.5" x="252.5" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="FEvFGn3x2a5UFLXiZ1Df-51" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Magnitude: Thousands of rows" vertex="1">
+          <mxGeometry height="40" width="175" x="810" y="340" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
