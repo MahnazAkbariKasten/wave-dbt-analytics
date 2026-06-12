@@ -1,0 +1,48 @@
+# models/marts/schema.yml
+
+version: 2
+
+models:
+  - name: fct_payment_summary_hourly
+    description: "Use Case 1: Pre-aggregated transaction metrics optimized for KPI dashboards."
+    columns:
+      - name: summary_id
+        data_tests:
+          - unique
+          - not_null
+      - name: payment_hour
+        data_tests:
+          - not_null
+
+  - name: fct_wallet_monthly_spending
+    description: "Use Case 2: Incremental running total of successful monthly spending per wallet."
+    columns:
+      - name: wallet_month_id
+        data_tests:
+          - unique
+          - not_null
+      - name: wallet_id
+        data_tests:
+          - not_null
+      - name: current_monthly_spent
+        data_tests:
+          - not_null
+
+  - name: rpt_kyc_breaches_current
+    description: >
+      Use Case 2: Near-real-time compliance breach alerting view.
+      WARNING: Driven by a 15-minute sync SLA. It does NOT guarantee zero-latency, real-time blocking. 
+      A user can exceed thresholds within the window before detection.
+    config:
+      meta:
+        sla_minutes: 15
+        data_freshness_risk: "High-frequency intra-window transactional exposure"
+    columns:
+      - name: wallet_id
+        data_tests:
+          - not_null
+      - name: breach_amount
+        data_tests:
+          - not_null
+      - name: alert_detected_at
+        description: "The exact timestamp when the batch pipeline detected and recorded the breach."

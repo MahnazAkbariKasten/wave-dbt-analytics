@@ -1,0 +1,5 @@
+source_currency,target_currency,rate_to_usd
+USD,USD,1.0000
+EUR,USD,1.0850
+GBP,USD,1.2720
+

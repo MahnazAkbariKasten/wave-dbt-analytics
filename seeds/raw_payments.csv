@@ -1,0 +1,4 @@
+payment_id,wallet_id,merchant_id,amount,status,channel,created_at,updated_at,currency,country
+P_01,W_101,M_001,450.00,success,App,2026-06-01 10:05:00,2026-06-01 10:05:00,EUR,DE
+P_02,W_101,M_002,600.00,success,Web,2026-06-01 10:10:00,2026-06-01 10:10:00,GBP,FR
+P_03,W_102,M_003,1200.00,success,App,2026-06-01 10:12:00,2026-06-01 10:12:00,USD,US

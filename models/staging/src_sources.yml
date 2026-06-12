@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw_sources
+    database: wave
+    schema: staging
+    tables:
+      - name: merchants
+        identifier: raw_merchants
+      - name: wallets
+        identifier: raw_wallets
+      - name: payments
+        identifier: raw_payments
+      - name: fx_rates
+        identifier: raw_fx_rates
