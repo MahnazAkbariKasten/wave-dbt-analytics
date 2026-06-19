@@ -12,7 +12,12 @@
 with incremental_payments as (
     select *
     from {{ ref('int_payments') }} -- Pulls from our 15-min incremental base model
-    {% if is_incremental() %}
+    {% if is_incremental() %}  -- Checks whether this model already exist in the database,
+    -- is that database object table, is the model configures with a incremental 
+    -- materialization and was the full refresh flag passed this dbt run. So you can force
+    -- a full refresh by passing the flag in on your dbt run command. So if it was an 
+    -- incremental run, we will apply the filter based upon what we ran last.
+
     -- Dynamically looks at only the rows that changed since this model last ran
     where updated_at >= (select max(updated_at) from {{ this }})
     {% endif %}

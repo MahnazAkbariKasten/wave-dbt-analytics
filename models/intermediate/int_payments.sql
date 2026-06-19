@@ -6,6 +6,8 @@
     )
 }}
 
+-- Queries the only rows from source tbale (stg_payments) that have been created 
+-- after the most recent batch in target table (int_payments).
 with raw_payments as (
     select
         payment_id,
@@ -16,9 +18,10 @@ with raw_payments as (
         channel,
         created_at,
         updated_at
-    from {{ source('raw_sources', 'payments') }}
+    from {{ source('raw_source', 'payments') }}
 
-    {% if is_incremental() %}
+    {% if is_incremental() %}  -- Checks whether this model already exist in 
+                               -- the database
     -- Snowflake interval syntax
     -- This filter ensures we only scan the last 15-30 minutes of data
     -- We look back 3 hours as a safe buffer for any late-arriving data or pipeline delays
@@ -33,10 +36,6 @@ with raw_payments as (
     -- that active 3-hour buffer window.
     -- From those few isolated micro-partitions, Snowflake extracts the small batch of rows 
     -- that arrived or changed in the last 15 minutes.
-    -- where updated_at >= (select max(updated_at) - interval '3 hours' from {{ this }})
-    -- {% endif %}
-    -- {% if is_incremental() %}
-    -- Postgres interval syntax change
     where updated_at >= (select max(updated_at) - interval '3 hours' from {{ this }})
     {% endif %}
 

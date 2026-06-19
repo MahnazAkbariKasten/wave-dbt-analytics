@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: raw_sources
+  - name: raw_source
     database: wave
-    schema: staging
+    schema: raw_source
     tables:
       - name: merchants
         identifier: raw_merchants

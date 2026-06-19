@@ -1,6 +1,6 @@
 with source_payments as (
     select * 
-    from {{ source('raw_sources', 'payments') }}
+    from {{ source('raw_source', 'payments') }}
 )
 
 select

@@ -32,12 +32,14 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   wave_dbt_prj: # Matches your project name definition
     staging:
-      +schema: staging # Tables land in wave.staging
+      +schema: staging # Views land in wave.staging
+      +materialized: view
     intermediate:
       +schema: intermediate # Tables land in wave.intermediate
+      +materialized: table
     marts:
       +schema: marts # Tables land in wave.marts
 
 seeds:
   wave_dbt_prj:
-    +schema: staging 
+    +schema: raw_source

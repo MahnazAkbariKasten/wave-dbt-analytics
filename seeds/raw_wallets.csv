@@ -1,3 +1,5 @@
-wallet_id,user_id,kyc_tier,kyc_limit,created_at,updated_at
-W_101,U_999,Tier 0,1000.00,2026-06-01 10:00:00,2026-06-01 10:00:00
-W_102,U_888,Tier 1,5000.00,2026-06-01 10:00:00,2026-06-01 10:00:00
+wallet_id,user_id,kyc_tier,created_at,country,status
+W001,U100,TIER_1,2026-01-01 10:00:00,BRL,active
+W002,U200,TIER_2,2026-01-02 11:30:00,BRL,inactive
+W003,U300,TIER_3,2026-01-03 14:15:00,BRL,blocked
+

@@ -23,6 +23,6 @@ select
     kyc_limit,
     created_at,
     updated_at
-from {{ source('raw_sources', 'wallets') }}
+from {{ source('raw_source', 'wallets') }}
 
 {% endsnapshot %}
