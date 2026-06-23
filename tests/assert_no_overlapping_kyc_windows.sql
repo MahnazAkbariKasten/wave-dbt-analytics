@@ -14,4 +14,4 @@ inner join {{ ref('snap_wallets') }} t2
 -- searches for any instance where a second record's starting time (t2.dbt_valid_from) begins after 
 -- a previous record started, but before that previous record officially closed (t1.dbt_valid_to)
 where t2.dbt_valid_from > t1.dbt_valid_from 
-  and t2.dbt_valid_from < coalesce(t1.dbt_valid_to, '9999-12-31'::timestamp_ntz)
+  and t2.dbt_valid_from < coalesce(t1.dbt_valid_to, '9999-12-31'::timestamp)

@@ -14,11 +14,13 @@ with raw_payments as (
         wallet_id,
         merchant_id,
         amount,
-        status,
+        currency,
+        payment_status,
+        payment_country,
         channel,
         created_at,
         updated_at
-    from {{ source('raw_source', 'payments') }}
+    from {{ ref( 'stg_payments')}}
 
     {% if is_incremental() %}  -- Checks whether this model already exist in 
                                -- the database
@@ -46,7 +48,9 @@ select
     wallet_id,
     merchant_id,
     amount,
-    status as payment_status,
+    currency,
+    payment_status,
+    payment_country,
     channel,
     created_at,
     updated_at

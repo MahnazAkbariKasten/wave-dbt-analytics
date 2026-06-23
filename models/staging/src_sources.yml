@@ -2,14 +2,107 @@ version: 2
 
 sources:
   - name: raw_source
+    description: "The core production ledger datasets provided directly by the upstream engineering team."
     database: wave
     schema: raw_source
+    
+    # Global Pipeline Freshness Tracker: Alerts you if data ingestion stalls
+    freshness:
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    loaded_at_field: created_at # Monitored by freshness configs using transactional timestamps
+
     tables:
-      - name: merchants
-        identifier: raw_merchants
-      - name: wallets
-        identifier: raw_wallets
+      # =========================================================================
+      # 1. PAYMENTS ENTITY
+      # =========================================================================
       - name: payments
         identifier: raw_payments
+        description: "The complete transaction ledger containing all settled, active, or pending fiat movement records."
+        columns:
+          - name: payment_id
+            description: "The primary key identifying a distinct transaction instance."
+            tests:
+              - unique
+              - not_null
+          - name: amount
+            description: "The net numeric value transferred via the clearing gateway."
+            tests:
+              - not_null
+          - name: status
+            description: "The current payment state."
+            tests:
+              - accepted_values:
+                  values: ['success', 'failed', 'reversed']
+
+      # =========================================================================
+      # 2. MERCHANTS ENTITY
+      # =========================================================================
+      - name: merchants
+        identifier: raw_merchants
+        description: "The commercial profile directory tracking business names, categories, and onboarding timestamps."
+        columns:
+          - name: merchant_id
+            description: "The unique identifier identifying a distinct vendor entity."
+            tests:
+              - unique
+              - not_null
+          - name: status
+            description: "The current account state regulating the merchant profile."
+            tests:
+              - accepted_values:
+                  values: ['active', 'inactive', 'suspended']
+          - name: category
+            description: "The category of merchant."
+            tests:
+              - accepted_values:
+                  values: ['supermarket', 'ecommerce', 'taxi', 'utility']
+
+      # =========================================================================
+      # 3. WALLETS ENTITY
+      # =========================================================================
+      - name: wallets
+        identifier: raw_wallets
+        description: "The client profile data mapping personal account creations, risk markers, and operational states."
+        columns:
+          - name: wallet_id
+            description: "The unique ledger key identifying an individual customer account container."
+            tests:
+              - unique
+              - not_null
+          - name: status
+            description: "The active account limitation state for the wallet holder."
+            tests:
+              - accepted_values:
+                  values: ['active', 'inactive', 'blocked']
+
+      # =========================================================================
+      # 4. FX_RATES REFERENCE DATA
+      # =========================================================================
       - name: fx_rates
-        identifier: raw_fx_rates
+        identifier: fx_rates
+        description: "Static currency conversion indices tracking baseline cross-border calculation multipliers."
+        # Override freshness for fx_rates since currency conversion indices update less frequently
+        freshness:
+          warn_after: {count: 48, period: hour}
+          error_after: {count: 72, period: hour}
+
+
+
+# version: 2
+
+# sources:                          # root structural block
+#   - name: raw_source              # logical namespace or alias for data source
+#     database: wave                # physical map pointing straight to PostgreSQL container
+#     schema: raw_source            # physical map pointing straight to PostgreSQL container
+#     tables:
+#       - name: merchants           # nickname 
+#         identifier: raw_merchants # physical table sitting inside PostgreSQL
+#         description: "Merchant details and latest status"
+#         columns
+#       - name: wallets
+#         identifier: raw_wallets
+#       - name: payments
+#         identifier: raw_payments
+#       - name: fx_rates
+#         identifier: raw_fx_rates

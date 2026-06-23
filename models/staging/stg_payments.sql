@@ -8,7 +8,6 @@ select
     wallet_id,
     merchant_id,
     amount,
-    -- Added back for multi-currency handling and geographic tracking
     currency,
     country as payment_country, 
     status as payment_status, 
