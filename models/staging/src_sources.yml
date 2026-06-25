@@ -1,4 +1,4 @@
-version: 2
+version: 3
 
 sources:
   - name: raw_source
@@ -28,16 +28,34 @@ sources:
             description: "The primary key identifying a distinct transaction instance."
             tests:
               - unique
+                  # config:
+                  #   error_if: ">10"
+                  #   warn_if: ">5"
               - not_null
           - name: amount
             description: "The net numeric value transferred via the clearing gateway."
             tests:
               - not_null
+                  # config:
+                  #   where: "status = 'success'" 
+              - is_positive
           - name: status
             description: "The current payment state."
             tests:
               - accepted_values:
                   values: ['success', 'failed', 'reversed']
+          - name: wallet_id
+            description: "Foreign key to Wallets"
+            tests:
+              - relationships:
+                  to: ref('stg_wallets')
+                  field: wallet_id
+          - name: merchant_id
+            description: "Foreign key to Merchants"
+            tests:
+              - relationships:
+                  to: ref('stg_merchants')
+                  field: merchant_id
 
       # =========================================================================
       # 2. MERCHANTS ENTITY
@@ -65,6 +83,7 @@ sources:
             tests:
               - accepted_values:
                   values: ['supermarket', 'ecommerce', 'taxi', 'utility']
+                  severity: warn
 
       # =========================================================================
       # 3. WALLETS ENTITY

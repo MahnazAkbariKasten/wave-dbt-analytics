@@ -1,4 +1,4 @@
 wallet_id,user_created_at,kyc_tier,country,is_agent,status,updated_at
-W001,2026-01-01 10:00:00,TIER_1,BRL,false,active,2026-01-01 10:00:00
-W002,2026-01-02 11:30:00,TIER_2,BRL,false,inactive,2026-01-02 11:30:00
-W003,2026-01-03 14:15:00,TIER_3,BRL,true,blocked,2026-01-03 14:15:00
+W_101,2026-01-01 10:00:00,TIER_1,BRL,false,active,2026-01-01 10:00:00
+W_102,2026-01-02 11:30:00,TIER_2,BRL,false,inactive,2026-01-02 11:30:00
+W_103,2026-01-03 14:15:00,TIER_3,BRL,true,blocked,2026-01-03 14:15:00

@@ -1,3 +1,5 @@
+-- models/staging/stg_payments.sql
+
 with source_payments as (
     select * 
     from {{ source('raw_source', 'payments') }}

@@ -1,3 +1,5 @@
+-- models/staging/stg_wallets.sql
+
 with source as (
     select * from {{ source('raw_source', 'wallets') }}
 )

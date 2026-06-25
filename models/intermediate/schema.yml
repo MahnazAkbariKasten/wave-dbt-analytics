@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  # =========================================================================
+  # 1. BASE INCREMENTAL PAYMENTS MODEL
+  # =========================================================================
+  - name: int_payments
+    description: "Base incremental transaction ledger filtering and buffering high-velocity streaming records."
+    columns:
+      - name: payment_id
+        description: "The primary key identifying a distinct transaction instance."
+        tests:
+          - unique
+          - not_null
+      - name: wallet_id
+        description: "Foreign key routing link mapping the transaction back to an account container."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_wallets')
+              field: wallet_id
+      - name: merchant_id
+        description: "Foreign key mapping the transaction to the destination merchant profile."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_merchants')
+              field: merchant_id
+      - name: amount
+        description: "The numeric ledger value transferred down the clearing gateway."
+        tests:
+          - not_null 
+          - is_positive
+
+  # =========================================================================
+  # 2. ENRICHED INCREMENTAL PAYMENTS MODEL
+  # =========================================================================
+  - name: int_payments_enriched
+    description: "The primary operational intermediate layer joining transactions against historical merchant profiles and temporal user KYC snapshot windows."
+    columns:
+      - name: payment_id
+        description: "The primary key identifying a distinct transaction instance."
+        tests:
+          - unique
+          - not_null
+      - name: wallet_id
+        description: "Primary customer account container ID link."
+        tests:
+          - not_null
+      - name: amount
+        description: "The net fiat numeric cost processed."
+        tests:
+          - not_null
+          - is_positive
+      - name: payment_hour
+        description: "The transaction creation timestamp truncated directly to the hour mark for high-performance dashboard indexing."
+        tests:
+          - not_null
+      - name: kyc_tier
+        description: "The historical verification tier status assigned to the wallet holder at the exact microsecond the payment instance occurred."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['TIER_1', 'TIER_2', 'TIER_3']
+      - name: merchant_category
+        description: "The industry tracking group classifying the vendor business model."
+        tests:
+          - not_null

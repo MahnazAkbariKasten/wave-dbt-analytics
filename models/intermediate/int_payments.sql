@@ -1,3 +1,5 @@
+-- models/intermediate/int_payments.sql
+
 {{
     config(
         materialized='incremental',
